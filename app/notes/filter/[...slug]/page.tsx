@@ -1,16 +1,21 @@
-import { fetchNotes } from "@/lib/api";
-import NoteList from "@/components/NoteList/NoteList";
+import Link from "next/link";
+import css from "./SidebarNotes.module.css";
 
-export default async function Page({
-    params,
-}: {
-    params: { slug: string[] };
-}) {
-    const tag = params.slug?.[0];
+const tags = ["all", "Work", "Personal", "Todo", "Meeting", "Shopping"];
 
-    const filterTag = tag === "all" ? "" : tag;
-
-    const data = await fetchNotes(filterTag, 1);
-
-    return <NoteList notes={data.notes} />;
+export default function SidebarNotes() {
+    return (
+        <ul className={css.menuList}>
+            {tags.map((tag) => (
+                <li key={tag} className={css.menuItem}>
+                    <Link
+                        href={`/notes/filter/${tag}`}
+                        className={css.menuLink}
+                    >
+                        {tag === "all" ? "All notes" : tag}
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    );
 }

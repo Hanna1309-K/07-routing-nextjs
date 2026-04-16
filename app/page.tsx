@@ -1,18 +1,24 @@
-import Link from "next/link";
-import styles from "./page.module.css";
+import css from "./page.module.css";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <h1 className={styles.title}>NoteHub</h1>
+    <main>
+      <div className={css.container}>
+        <h1 className={css.title}>Welcome to NoteHub</h1>
 
-      <p className={styles.text}>
-        Welcome to Notes App
-      </p>
+        <p className={css.description}>
+          NoteHub is a simple and efficient application designed for managing
+          personal notes. It helps keep your thoughts organized and accessible
+          in one place, whether you are at home or on the go.
+        </p>
 
-      <Link href="/notes" className={styles.link}>
-        Go to Notes →
-      </Link>
-    </div>
+        <p className={css.description}>
+          The app provides a clean interface for writing, editing, and browsing
+          notes. With support for keyword search and structured organization,
+          NoteHub offers a streamlined experience for anyone who values clarity
+          and productivity.
+        </p>
+      </div>
+    </main>
   );
 }
