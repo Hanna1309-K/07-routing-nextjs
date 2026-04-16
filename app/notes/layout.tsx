@@ -6,17 +6,21 @@ export default function NotesLayout({
     modal,
 }: {
     children: React.ReactNode;
-    sidebar: React.ReactNode;
-    modal: React.ReactNode;
+    sidebar?: React.ReactNode;
+    modal?: React.ReactNode;
 }) {
     return (
-        <div className={css.layout}>
+        <div className={css.container}>
             {sidebar && (
                 <aside className={css.sidebar}>
                     {sidebar}
                 </aside>
             )}
-            <main className={css.content}>{children}</main>
+
+            <main className={css.notesWrapper}>
+                {children}
+            </main>
+
             {modal}
         </div>
     );
