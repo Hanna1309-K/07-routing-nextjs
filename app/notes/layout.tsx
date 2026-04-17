@@ -1,26 +1,18 @@
-import css from "./LayoutNotes.module.css";
-
-type Props = {
-    children: React.ReactNode;
-    sidebar?: React.ReactNode;
-    modal?: React.ReactNode;
-};
+import type { ReactNode } from "react";
 
 export default function NotesLayout({
     children,
     sidebar,
     modal,
-}: Props) {
+}: {
+    children: ReactNode;
+    sidebar: ReactNode;
+    modal?: ReactNode;
+}) {
     return (
-        <div className={css.container}>
-            <aside className={css.sidebar}>
-                {sidebar}
-            </aside>
-
-            <main className={css.notesWrapper}>
-                {children}
-            </main>
-
+        <div>
+            <aside>{sidebar}</aside>
+            <main>{children}</main>
             {modal}
         </div>
     );

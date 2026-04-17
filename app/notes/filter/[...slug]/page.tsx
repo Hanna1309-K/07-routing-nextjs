@@ -1,21 +1,12 @@
-import Link from "next/link";
-import css from "./SidebarNotes.module.css";
+import NotesClient from "../../Notes.client";
 
-const tags = ["all", "Work", "Personal", "Todo", "Meeting", "Shopping"];
+export default function Page({
+    params,
+}: {
+    params: { slug: string[] };
+}) {
+    const rawTag = params.slug[0];
+    const tag = rawTag === "all" ? undefined : rawTag;
 
-export default function SidebarNotes() {
-    return (
-        <ul className={css.menuList}>
-            {tags.map((tag) => (
-                <li key={tag} className={css.menuItem}>
-                    <Link
-                        href={`/notes/filter/${tag}`}
-                        className={css.menuLink}
-                    >
-                        {tag === "all" ? "All notes" : tag}
-                    </Link>
-                </li>
-            ))}
-        </ul>
-    );
+    return <NotesClient tag={tag} />;
 }

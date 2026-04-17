@@ -1,5 +1,3 @@
-// lib/api.ts
-
 import axios from "axios";
 import { Note } from "@/types/note";
 
@@ -17,10 +15,15 @@ const api = axios.create({
 
 export const fetchNotes = async (
     search: string = "",
-    page: number = 1
+    page: number = 1,
+    tag?: string
 ): Promise<NotesResponse> => {
     const res = await api.get<NotesResponse>("/notes", {
-        params: { search, page },
+        params: {
+            search,
+            page,
+            tag: tag && tag !== "all" ? tag : undefined,
+        },
     });
 
     return res.data;
