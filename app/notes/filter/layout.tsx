@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import css from "./LayoutNotes.module.css";
+import css from "../LayoutNotes.module.css";
 
 export default function Layout({
     children,
