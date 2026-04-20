@@ -3,7 +3,7 @@ import css from "../LayoutNotes.module.css";
 
 type Props = {
     children: ReactNode;
-    sidebar: ReactNode;
+    sidebar?: ReactNode; // ❗ must be optional
 };
 
 export default function Layout({ children, sidebar }: Props) {

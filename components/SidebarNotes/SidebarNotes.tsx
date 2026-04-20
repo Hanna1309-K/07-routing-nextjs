@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
+import Link from "next/link";
 import css from "./SidebarNotes.module.css";
 
 const tags = ["Work", "Personal", "Todo", "Meeting", "Shopping"];
@@ -7,19 +7,19 @@ export default function SidebarNotes() {
     return (
         <ul className={css.menuList}>
             <li className={css.menuItem}>
-                <a href="/notes/filter/all" className={css.menuLink}>
+                <Link href="/notes/filter/all" className={css.menuLink}>
                     All notes
-                </a>
+                </Link>
             </li>
 
             {tags.map((tag) => (
                 <li key={tag} className={css.menuItem}>
-                    <a
-                        href={`/notes/filter/${tag.toLowerCase()}`}
+                    <Link
+                        href={`/notes/filter/${tag}`}
                         className={css.menuLink}
                     >
                         {tag}
-                    </a>
+                    </Link>
                 </li>
             ))}
         </ul>
