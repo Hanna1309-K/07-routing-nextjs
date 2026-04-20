@@ -1,12 +1,13 @@
 import type { ReactNode } from "react";
 import css from "../LayoutNotes.module.css";
 
-type Props = {
+export default function Layout({
+    children,
+    sidebar,
+}: {
     children: ReactNode;
-    sidebar?: ReactNode; // ❗ must be optional
-};
-
-export default function Layout({ children, sidebar }: Props) {
+    sidebar?: ReactNode;
+}) {
     return (
         <div className={css.container}>
             {sidebar}
