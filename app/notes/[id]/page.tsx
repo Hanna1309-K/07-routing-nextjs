@@ -3,22 +3,27 @@ import { fetchNoteById } from "@/lib/api";
 import NoteDetailsClient from "./NoteDetails.client";
 import { notFound } from "next/navigation";
 
-export default async function Page({ params }: { params: { id: string } }) {
+type Props = {
+    params: Promise<{ id: string }>;
+};
+
+export default async function Page({ params }: Props) {
+    const { id } = await params;
+
     const queryClient = new QueryClient();
 
     try {
         await queryClient.prefetchQuery({
-            queryKey: ["note", params.id],
-            queryFn: () => fetchNoteById(params.id),
+            queryKey: ["note", id],
+            queryFn: () => fetchNoteById(id),
         });
     } catch {
-        // якщо бекенд повернув помилку (наприклад 404)
         notFound();
     }
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <NoteDetailsClient />
+            <NoteDetailsClient id={id} />
         </HydrationBoundary>
     );
 }
