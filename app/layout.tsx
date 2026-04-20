@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  modal?: React.ReactNode; // ❗ optional
+  modal: React.ReactNode; // ❗ required (НЕ optional)
 };
 
 export default function RootLayout({ children, modal }: Props) {
