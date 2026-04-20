@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import css from "../LayoutNotes.module.css";
 
 export default function Layout({
     children,
@@ -9,12 +8,9 @@ export default function Layout({
     sidebar?: ReactNode;
 }) {
     return (
-        <div className={css.container}>
+        <div>
             {sidebar}
-
-            <main className={css.notesWrapper}>
-                {children}
-            </main>
+            {children}
         </div>
     );
 }
